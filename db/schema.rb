@@ -10,10 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_29_111338) do
+ActiveRecord::Schema.define(version: 2022_06_29_115713) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "releases", force: :cascade do |t|
+    t.string "version_number"
+    t.string "software_url"
+    t.bigint "software_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["software_id"], name: "index_releases_on_software_id"
+    t.index ["user_id"], name: "index_releases_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.text "comment"
+    t.integer "rating"
+    t.bigint "user_id", null: false
+    t.bigint "release_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["release_id"], name: "index_reviews_on_release_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
+  create_table "softwares", force: :cascade do |t|
+    t.string "title"
+    t.string "image_url"
+    t.text "description"
+    t.float "price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,8 +54,14 @@ ActiveRecord::Schema.define(version: 2022_06_29_111338) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "last_name"
+    t.string "first_name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "releases", "softwares"
+  add_foreign_key "releases", "users"
+  add_foreign_key "reviews", "releases"
+  add_foreign_key "reviews", "users"
 end
