@@ -1,2 +1,10 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
+<p>test test test</p>
+<% softwares = Software.all%>
+<% softwares.each do |software| %>
+<%= software.title %><br>
+<%= software.description %><br>
+<%= software.image_url %><br>
+<%= software.price %><br><br>
+<% end %>
