@@ -1,12 +1,12 @@
 <div class="container">
-  <% if current_user.role > 0 %>
+  <% if current_user.role && current_user.role > 0 %>
     <%= link_to "Add new software", new_software_path, class: "p-2" %>
   <% end %>
   <% @softwares.each do |software| %>
     <div class="card m-2">
       <h1 class="p-2"><%= link_to software.title, software_path(software) %></h1>
       <p class="p-2"><%= software.description %></p>
-      <% if current_user.role > 0 %>
+      <% if current_user.role && current_user.role > 0 %>
       <%= link_to "Add new release", new_software_release_path(software), class: "p-2"%>
       <% end %>
     </div>
