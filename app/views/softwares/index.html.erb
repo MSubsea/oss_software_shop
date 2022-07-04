@@ -1,0 +1,8 @@
+<div class="container">
+  <% @softwares.each do |software| %>
+    <div class="card m-2">
+      <h1 class="p-2"><%= software.title %></h1>
+      <p class="p-2"><%= software.description %></p>
+    </div>
+  <% end %>
+</div>
