@@ -1,0 +1,8 @@
+<div class="container mt-5">
+  <h1 class="pt-3">Create New Release</h1>
+  <%= simple_form_for [@software, @release] do |f|%>
+  <%= f.input :version_number %>
+  <%= f.input :software_url %>
+  <%= f.submit %>
+  <% end %>
+</div>
