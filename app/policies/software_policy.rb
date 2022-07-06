@@ -9,4 +9,22 @@ class SoftwarePolicy < ApplicationPolicy
   def show?
     true
   end
+
+  def create?
+    admin?
+  end
+
+  def update?
+    admin?
+  end
+
+  def destroy?
+    admin?
+  end
+
+  private
+
+  def admin?
+    user && user.role && user.role > 1
+  end
 end
