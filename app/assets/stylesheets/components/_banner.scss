@@ -1,0 +1,19 @@
+.banner {
+  background-image: url('https://images.unsplash.com/photo-1551403793-9beb68d417af?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80');
+  background-size: cover;
+  height: 540px;
+  padding: 100px 0;
+  text-align: center;
+}
+
+.banner h1 {
+  color: white;
+  font-size: 64px;
+}
+
+.banner p {
+  color: white;
+  font-size: 24px;
+  opacity: 0.8;
+  margin: 64px;
+}
