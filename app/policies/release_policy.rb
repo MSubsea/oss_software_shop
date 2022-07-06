@@ -7,6 +7,6 @@ class ReleasePolicy < ApplicationPolicy
   end
 
   def create?
-    true
+    user && user.role && (user.role > 0)
   end
 end
