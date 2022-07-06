@@ -29,6 +29,7 @@ class SoftwaresController < ApplicationController
 
   def destroy
     @software = Software.find(params[:id])
+    authorize @software
     @software.destroy
     redirect_to softwares_path
   end
