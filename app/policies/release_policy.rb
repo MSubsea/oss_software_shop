@@ -5,4 +5,8 @@ class ReleasePolicy < ApplicationPolicy
     #   scope.all
     # end
   end
+
+  def create?
+    user && user.role && (user.role > 0)
+  end
 end
