@@ -1,17 +1,18 @@
-<!-- Grey with black text -->
-<nav class="navbar navbar-expand-sm bg-light navbar-light px-1 fixed-top">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
     <%= link_to root_path do %>
       <%= image_tag "https://media.glassdoor.com/sqll/721178/onesubsea-squarelogo-1576735523603.png", alt: "alttext", class: "navbar-brand" %>
     <% end %>
-    <ul class="navbar-nav px-1">
+      <ul class="navbar-nav px-1">
       <li class="nav-item">
         <%= link_to "Home", root_path, class: "nav-link" %>
       </li>
       <li class="nav-item">
         <%= link_to "Our software", softwares_path, class: "nav-link" %>
       </li>
-        <% if user_signed_in? %>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto">
+           <% if user_signed_in? %>
           <li class="nav-item dropdown">
             <%= image_tag "https://kitt.lewagon.com/placeholder/users/Random", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -24,6 +25,7 @@
             <%= link_to "Login", new_user_session_path, class: "nav-link" %>
           </li>
         <% end %>
-    </ul>
+      </ul>
+    </div>
   </div>
-</nav>
+</div>
