@@ -1,6 +1,16 @@
-<div class="container">
+<div class="container mt-5">
   <h1 class="p-2"><%= @software.title %></h1>
   <h3 class="p-2"><%= @software.price %> €</h2>
   <%= image_tag @software.image_url, class: "img-logo" %>
   <p class="p-2"><%= @software.description %></p>
+
+  <% if policy(@software).edit? %>
+    <%= link_to 'Edit', edit_software_path(@software)%>
+  <% end %>
+  <% if policy(@software).destroy? %>
+    <%= link_to "Delete",
+            software_path(@software),
+            method: :delete,
+            data: { confirm: "Are you sure?" } %>
+  <% end %>
 </div>
