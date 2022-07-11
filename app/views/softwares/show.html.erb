@@ -13,4 +13,15 @@
             method: :delete,
             data: { confirm: "Are you sure?" } %>
   <% end %>
+  <% if current_user && current_user.role && current_user.role > 0 %>
+    <%= link_to "Add new release", new_software_release_path(@software)%>
+  <% end %>
+  <hr>
+  <h2>Available Releases</h2>
+  <% @software.releases.each do |release| %>
+    <div class="card m-2 p-2">
+      <h3><%= release.version_number %></h3>
+      <%= link_to "Download", release.software_url %>
+    </div>
+  <% end %>
 </div>
