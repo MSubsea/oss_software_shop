@@ -21,13 +21,26 @@
   <% @software.releases.each do |release| %>
     <div class="card m-2 p-2">
       <h3><%= release.version_number %></h3>
-      <%= link_to "Download", release.software_url %>
-      <% if current_user && ((current_user.role && current_user.role > 1) || release.user == current_user) %>
-        <%= link_to "Update release", edit_release_path(release) %>
-        <%= link_to "Remove", release_path(release), method: :delete %>
-      <% end %>
-      <% if current_user %>
-        <%= link_to "Create Review", new_release_review_path(release) %>
+      <div class="d-flex">
+        <%= link_to "Download", release.software_url, class: "p-2" %>
+        <% if current_user && ((current_user.role && current_user.role > 1) || release.user == current_user) %>
+          <%= link_to "Update release", edit_release_path(release), class: "p-2" %>
+          <%= link_to "Remove", release_path(release), method: :delete, class: "p-2" %>
+        <% end %>
+        <% if current_user %>
+          <%= link_to "Create Review", new_release_review_path(release), class: "p-2" %>
+        <% end %>
+      </div>
+      <hr>
+      <h4>Reviews</h4>
+      <% if release.reviews.count > 0%>
+        <% release.reviews.each do |review| %>
+          <p><strong><%= review.user.first_name %> <%= review.user.last_name %></strong><br>
+          <%= review.comment %></p>
+          <p><strong>Rating:</strong> <%= review.rating %></p>
+        <% end %>
+      <% else %>
+        <p>No reviews available</p>
       <% end %>
     </div>
   <% end %>
