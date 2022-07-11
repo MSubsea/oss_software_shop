@@ -13,4 +13,8 @@ class ReleasePolicy < ApplicationPolicy
   def update?
     user && user.role && (user.role > 0)
   end
+
+  def destroy?
+    user && user.role && (user.role > 0)
+  end
 end
