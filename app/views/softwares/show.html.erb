@@ -21,6 +21,12 @@
   <% @software.releases.each do |release| %>
     <div class="card m-2 p-2">
       <h3><%= release.version_number %></h3>
+      <% release.reviews.each do |review| %>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center border-0"><%= review.comment %>
+          <span class="badge bg-dark rounded-pill"><%= review.rating %></span></li>
+        </ul>
+      <% end %>
       <%= link_to "Download", release.software_url %>
       <% if current_user && ((current_user.role && current_user.role > 1) || release.user == current_user) %>
         <%= link_to "Update release", edit_release_path(release) %>
