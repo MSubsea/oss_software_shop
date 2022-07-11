@@ -4,6 +4,7 @@
   <%= image_tag @software.image_url, class: "img-logo" %>
   <p class="p-2"><%= @software.description %></p>
 
+  <%= link_to 'Overview', softwares_path() %>
   <% if policy(@software).edit? %>
     <%= link_to 'Edit', edit_software_path(@software)%>
   <% end %>
