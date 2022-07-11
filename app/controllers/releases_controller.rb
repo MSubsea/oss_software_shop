@@ -15,6 +15,18 @@ class ReleasesController < ApplicationController
     redirect_to software_path(@software)
   end
 
+  def edit
+    @release = Release.find(params[:id])
+    authorize @release
+  end
+
+  def update
+    @release = Release.find(params[:id])
+    authorize @release
+    @release.update(release_params)
+    redirect_to software_path(@release.software)
+  end
+
   private
 
   def release_params

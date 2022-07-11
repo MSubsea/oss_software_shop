@@ -22,6 +22,12 @@
     <div class="card m-2 p-2">
       <h3><%= release.version_number %></h3>
       <%= link_to "Download", release.software_url %>
+      <% if current_user && ((current_user.role && current_user.role > 1) || release.user == current_user) %>
+        <%= link_to "Update release", edit_release_path(release) %>
+      <% end %>
+      <% if current_user %>
+        <%= link_to "Create Review", new_release_review_path(release) %>
+      <% end %>
     </div>
   <% end %>
 </div>

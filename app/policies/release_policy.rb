@@ -9,4 +9,8 @@ class ReleasePolicy < ApplicationPolicy
   def create?
     user && user.role && (user.role > 0)
   end
+
+  def update?
+    user && user.role && (user.role > 0)
+  end
 end
