@@ -6,4 +6,7 @@ class Software < ApplicationRecord
   validates :title, uniqueness: true, presence: true
   validates :price, presence: true
   validates :description, presence: true, length: { minimum: 20 }
+
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
 end

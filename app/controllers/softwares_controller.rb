@@ -8,6 +8,11 @@ class SoftwaresController < ApplicationController
 
   def show
     authorize @software
+    @geojson = Array.new()
+    @geojson << {
+      lat: @software.latitude,
+      lng: @software.longitude
+    }
   end
 
   def create
