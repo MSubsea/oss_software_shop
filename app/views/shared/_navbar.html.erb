@@ -11,11 +11,17 @@
       <li class="nav-item">
         <%= link_to "Our software", softwares_path, class: "nav-link" %>
       </li>
+      <% if policy(User).destroy? %>
+      <li class="nav-item">
+        <%= link_to "Manage users", users_path, class: "nav-link" %>
+      </li>
+      <% end %>
         <% if user_signed_in? %>
           <li class="nav-item dropdown">
             <%= image_tag "https://kitt.lewagon.com/placeholder/users/Random", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "My releases", "#", class: "dropdown-item" %>
+              <%= link_to "Manage Account", edit_user_registration_path, class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
             </div>
           </li>
