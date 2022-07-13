@@ -27,6 +27,14 @@ class ReleasesController < ApplicationController
     redirect_to software_path(@release.software)
   end
 
+  def destroy
+    @release = Release.find(params[:id])
+    authorize @release
+    software = @release.software
+    @release.destroy
+    redirect_to software_path(software)
+  end
+
   private
 
   def release_params
