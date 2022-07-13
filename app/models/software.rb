@@ -1,4 +1,5 @@
 class Software < ApplicationRecord
+  belongs_to :customer
   has_many :releases, dependent: :destroy
   has_many :reviews, through: :releases
   has_one_attached :photo
