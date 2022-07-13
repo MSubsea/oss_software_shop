@@ -7,11 +7,15 @@ require 'faker'
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-100.times do
+10.times do
   Software.create(title: Faker::App.name,
                   image_url: Faker::Company.logo,
                   description: Faker::TvShows::RickAndMorty.quote,
-                  price: Faker::Number.between(from: 120.0, to: 1344.22).truncate(2))
+                  price: Faker::Number.between(from: 120.0, to: 1344.22).truncate(2),
+                  longitude: Faker::Address.longitude,
+                  latitude: Faker::Address.latitude,
+                  address: Faker::Address.street_address
+                )
 end
 
 10.times do
@@ -23,14 +27,14 @@ end
               last_name: last_name)
 end
 
-100.times do
+10.times do
   Release.create(version_number: Faker::App.version,
                  software_url: Faker::Internet.url,
                  software_id: Faker::Number.between(from: 0, to: 99),
                  user_id: Faker::Number.between(from: 0, to: 9))
 end
 
-100.times do
+10.times do
   Review.create(comment: "#{Faker::Quotes::Shakespeare.romeo_and_juliet} #{Faker::SlackEmoji.emoji}",
                 rating: Faker::Number.between(from: 0, to: 5),
                 user_id: Faker::Number.between(from: 0, to: 9),
