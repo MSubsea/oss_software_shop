@@ -14,7 +14,7 @@
         </div>
       </div>
       <% if current_user %>
-        <% if current_user.role && current_user.role > 0 %>
+        <% if policy(Release).new? %>
           <%= link_to "Add new release", new_software_release_path(software), class: "p-2"%>
         <% end %>
       <% end %>

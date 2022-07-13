@@ -1,13 +1,13 @@
 class ReviewsController < ApplicationController
   def new
     @review = Review.new
-    skip_authorization
+    authorize @review
     @release = Release.find(params[:release_id])
   end
 
   def create
     @review = Review.new(review_params)
-    skip_authorization
+    authorize @review
     @release = Release.find(params[:release_id])
     @review.user = current_user
     @review.release = @release

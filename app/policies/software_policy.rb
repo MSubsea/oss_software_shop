@@ -25,6 +25,6 @@ class SoftwarePolicy < ApplicationPolicy
   private
 
   def admin?
-    user && user.role && user.role > 1
+    user&.admin?
   end
 end
