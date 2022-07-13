@@ -2,7 +2,7 @@ class UserPolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
-      if user && user.role && user.role > 1
+      if user.admin?
         scope.all
       end
     end
@@ -19,6 +19,6 @@ class UserPolicy < ApplicationPolicy
   private
 
   def admin?
-    user && user.role && user.role > 1
+    user&.admin?
   end
 end

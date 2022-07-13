@@ -7,14 +7,24 @@ class ReleasePolicy < ApplicationPolicy
   end
 
   def create?
-    user && user.role && (user.role > 0)
+    dev_or_admin?
   end
 
   def update?
-    user && user.role && (user.role > 0)
+    owner_or_admin?
   end
 
   def destroy?
-    user && user.role && (user.role > 0)
+    owner_or_admin?
+  end
+
+  private
+
+  def owner_or_admin?
+    (user&.developer? && record.user == user) || user&.admin?
+  end
+
+  def dev_or_admin?
+    user&.admin? || user&.developer?
   end
 end
