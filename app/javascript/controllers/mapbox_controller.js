@@ -13,7 +13,7 @@ export default class extends Controller {
 
     this.map = new mapboxgl.Map({
       container: this.element,
-      style: "mapbox://styles/mapbox/streets-v10"
+      style: "mapbox://styles/bjoernwiegert/cl5jq9q9y003u14o16gytftjy"
     })
 
     this.#addMarkersToMap()
@@ -22,7 +22,15 @@ export default class extends Controller {
 
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {
-      new mapboxgl.Marker()
+      // Create a HTML element for your custom marker
+      const customMarker = document.createElement("div")
+      customMarker.className = "marker"
+      customMarker.style.backgroundImage = `url('${marker.image_url}')`
+      customMarker.style.backgroundSize = "contain"
+      customMarker.style.width = "25px"
+      customMarker.style.height = "25px"
+
+      new mapboxgl.Marker(customMarker)
         .setLngLat([marker.lng, marker.lat])
         .addTo(this.map)
     });
