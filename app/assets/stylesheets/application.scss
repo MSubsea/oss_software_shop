@@ -12,4 +12,5 @@
 @import "components/index";
 @import "pages/index";
 //@import "@mapbox/mapbox-gl-geocoder";
-@import "mapbox-gl/dist/mapbox-gl";
+// @import "mapbox-gl/dist/mapbox-gl";
+@import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder';
