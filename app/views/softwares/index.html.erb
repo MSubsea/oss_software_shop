@@ -2,6 +2,14 @@
   <% if policy(Software).new? %>
     <%= link_to "Add new software", new_software_path, class: "p-2" %>
   <% end %>
+  <%= form_tag softwares_path, method: :get do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Search for software"
+    %>
+    <%= submit_tag "Search", class: "btn btn-primary" %>
+  <% end %>
   <% @softwares.each do |software| %>
     <div class="card m-2">
       <div class="d-flex">
