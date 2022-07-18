@@ -1,0 +1,32 @@
+<div class="container">
+  <h1>Customers</h1>
+  <% if policy(Customer).new? %>
+    <%= link_to "Add new customer", new_customer_path %>
+  <% end %>
+  <% @customers.each do |customer| %>
+    <div class="card">
+      <h1><%= customer.name %></h1>
+      <% if customer.image_url %>
+        <%= image_tag customer.image_url, class: "w-25 mh-25" %>
+      <% end %>
+      <div class="customer-foot d-flex">
+        <div class="p-2">
+          <p><%= customer.softwares.count %> project(s) available</p>
+        </div>
+        <% if policy(customer).update? %>
+          <div class="p-2">
+            <%= link_to 'Edit', edit_customer_path(customer)%>
+          </div>
+        <% end %>
+        <% if policy(customer).destroy? %>
+          <div class="p-2">
+            <%= link_to "Delete",
+                    customer_path(customer),
+                    method: :delete,
+                    data: { confirm: "Are you sure?" } %>
+            </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
