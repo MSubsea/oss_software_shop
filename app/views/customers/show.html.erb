@@ -1,9 +1,10 @@
 <div class="container mt-5">
-  <% if policy(Software).new? %>
-    <%= link_to "Add new software", new_software_path, class: "p-2" %>
-  <% end %>
-  <% @softwares.each do |software| %>
-    <div class="card m-2">
+  <h1><%= @customer.name %></h1>
+  <%= link_to "Back to Customers index", customers_path %>
+  <%= render "foot", customer: @customer %>
+  <hr>
+  <% @customer.softwares.each do |software| %>
+    <div class="card mt-2">
       <div class="d-flex">
         <div class="px-2">
           <% if software.photo.key.present? %>
@@ -15,11 +16,7 @@
           <p class="p-2"><%= software.description %></p>
         </div>
       </div>
-      <% if current_user %>
-        <% if policy(Release).new? %>
-          <%= link_to "Add new release", new_software_release_path(software), class: "p-2"%>
-        <% end %>
-      <% end %>
     </div>
   <% end %>
+  <br>
 </div>
