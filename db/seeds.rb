@@ -21,7 +21,9 @@ Customer.create(name: "BP",
               )
 
 10.times do
-  Software.create(title: Faker::App.name,
+  file = URI.open('https://source.unsplash.com/random')
+
+  software =  Software.create(title: Faker::App.name,
                   image_url: Faker::Company.logo,
                   description: Faker::TvShows::RickAndMorty.quote,
                   price: Faker::Number.between(from: 120.0, to: 1344.22).truncate(2),
@@ -30,6 +32,7 @@ Customer.create(name: "BP",
                   address: Faker::Address.street_address,
                   customer_id: Faker::Number.between(from: 1, to: 4)
                 )
+    software.photo.attach(io: file, filename: 'random.jpg', content_type: 'image/jpg')
 end
 
 10.times do
