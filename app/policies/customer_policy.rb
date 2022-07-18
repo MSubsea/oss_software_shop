@@ -1,18 +1,17 @@
-class SoftwarePolicy < ApplicationPolicy
+class CustomerPolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
-      scope.all
+      if user.admin?
+        scope.all
+      end
     end
-  end
-
-  def show?
-    true
   end
 
   def create?
     admin?
   end
+
 
   def update?
     admin?

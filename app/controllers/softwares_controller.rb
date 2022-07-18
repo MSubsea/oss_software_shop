@@ -11,7 +11,8 @@ class SoftwaresController < ApplicationController
     @geojson = Array.new()
     @geojson << {
       lat: @software.latitude,
-      lng: @software.longitude
+      lng: @software.longitude,
+      image_url: helpers.asset_url("platform.png")
     }
   end
 

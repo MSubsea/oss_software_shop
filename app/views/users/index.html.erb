@@ -5,15 +5,7 @@
         <div class="px-2">
           <h1 class="p-2"><%= user.first_name %> <%= user.last_name %></h1>
           <p class="p-2"><%= user.email %></p>
-          <p class="p-2"> Role:
-            <% if user.role == 2 %>
-              <%= "admin" %>
-            <% elsif user.role == 1 %>
-              <%= "developer" %>
-            <% else %>
-              <%= "user" %>
-            <% end %>
-          </p>
+          <p class="p-2"><%= user.role %></p>
           <%= link_to "Edit", edit_user_path(user) %>
           <%= link_to "Delete",
             user_path(user),
