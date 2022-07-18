@@ -6,7 +6,7 @@
     <div class="card m-2">
       <div class="d-flex">
         <div class="px-2">
-          <%= image_tag software.image_url, class: "img-logo" %>
+          <%= cl_image_tag software.photo.key, height: 200, width: 200, crop: :fill %>
         </div>
         <div class="px-2">
           <h1 class="p-2"><%= link_to software.title, software_path(software) %></h1>
