@@ -25,7 +25,7 @@
             method: :delete,
             data: { confirm: "Are you sure?" } %>
   <% end %>
-  <% if current_user && current_user.role && current_user.role > 0 %>
+  <% if policy(Release).new? %>
     <%= link_to "Add new release", new_software_release_path(@software)%>
   <% end %>
   <hr>
@@ -40,10 +40,10 @@
         </ul>
       <% end %>
       <%= link_to "Download", release.software_url %>
-      <% if current_user && ((current_user.role && current_user.role > 1) || release.user == current_user) %>
+      <% if policy(release).edit? %>
         <%= link_to "Update release", edit_release_path(release) %>
       <% end %>
-      <% if current_user %>
+      <% if policy(Review).new? %>
         <%= link_to "Create Review", new_release_review_path(release) %>
       <% end %>
     </div>
