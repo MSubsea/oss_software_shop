@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <h1 class="p-2"><%= @software.title %></h1>
   <h3 class="p-2"><%= @software.price %> €</h2>
-  <%= image_tag @software.image_url, class: "img-logo" %>
+  <%= cl_image_tag @software.photo.key, height: 200, width: 200, crop: :fill %>
   <p class="p-2"><%= @software.description %></p>
 
   <%= link_to 'Overview', softwares_path() %>

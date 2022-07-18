@@ -57,6 +57,6 @@ class SoftwaresController < ApplicationController
   end
 
   def software_params
-    params.require(:software).permit(:title, :image_url, :description, :price)
+    params.require(:software).permit(:title, :image_url, :description, :price, :photo)
   end
 end
