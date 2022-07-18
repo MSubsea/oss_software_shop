@@ -1,9 +1,13 @@
 class SoftwaresController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :index ]
+  skip_before_action :authenticate_user!, only: [:index]
   before_action :find_software, only: [:show, :edit, :update]
 
   def index
-    @softwares = policy_scope(Software)
+    if params[:query].present?
+      @softwares = policy_scope(Software).search_by_title_and_description(params[:query])
+    else
+      @softwares = policy_scope(Software)
+    end
   end
 
   def show
