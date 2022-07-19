@@ -1,6 +1,9 @@
 <div class="container mt-5">
   <h1><%= @customer.name %></h1>
   <%= link_to "Back to Customers index", customers_path %>
+  <% if policy(Software).create? %>
+    <%= link_to "Add new software", new_software_path %>
+  <% end %>
   <%= render "foot", customer: @customer %>
   <hr>
   <% @customer.softwares.each do |software| %>
