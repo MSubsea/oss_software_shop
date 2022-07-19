@@ -9,6 +9,9 @@
         <%= link_to "Home", root_path, class: "nav-link" %>
       </li>
       <li class="nav-item">
+        <%= link_to "Customers", customers_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
         <%= link_to "Our software", softwares_path, class: "nav-link" %>
       </li>
       <% if policy(User).destroy? %>
