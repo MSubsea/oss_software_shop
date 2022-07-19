@@ -35,6 +35,11 @@ class CustomersController < ApplicationController
     redirect_to customers_path
   end
 
+  def show
+    @customer = Customer.find(params[:id])
+    authorize @customer
+  end
+
   private
 
   def customer_params

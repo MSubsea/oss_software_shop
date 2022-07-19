@@ -1,0 +1,22 @@
+<div class="container mt-5">
+  <h1><%= @customer.name %></h1>
+  <%= link_to "Back to Customers index", customers_path %>
+  <%= render "foot", customer: @customer %>
+  <hr>
+  <% @customer.softwares.each do |software| %>
+    <div class="card mt-2">
+      <div class="d-flex">
+        <div class="px-2">
+          <% if software.photo.key.present? %>
+            <%= cl_image_tag software.photo.key, height: 200, width: 200, crop: :fill %>
+          <% end %>
+        </div>
+        <div class="px-2">
+          <h1 class="p-2"><%= link_to software.title, software_path(software) %></h1>
+          <p class="p-2"><%= software.description %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <br>
+</div>

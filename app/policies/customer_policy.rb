@@ -21,6 +21,10 @@ class CustomerPolicy < ApplicationPolicy
     admin?
   end
 
+  def show?
+    user
+  end
+
   private
 
   def admin?
