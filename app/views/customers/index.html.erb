@@ -1,15 +1,34 @@
 <div class="container mt-5">
-  <h1>Customers</h1>
+  <h1 class="h1 text-center">Customers</h1>
   <% if policy(Customer).new? %>
     <%= link_to "Add new customer", new_customer_path %>
   <% end %>
-  <% @customers.each do |customer| %>
-    <div class="card">
-      <h1><%= link_to customer.name, customer_path(customer) %></h1>
-      <% if customer.image_url %>
-        <%= image_tag customer.image_url, class: "w-25 mh-25" %>
-      <% end %>
-      <%= render "foot", customer: customer %>
+
+  <div class="container">
+    <div class="row">
+    <% @customers.each do |customer| %>
+
+      <div class="col">
+        <div class="custcontainer">
+          <div class="card">
+            <div class="imgBx">
+              <% if customer.image_url %>
+              <%= image_tag customer.image_url, class: "w-4 mh-4" %>
+              <% end %>
+            </div>
+            <div class="contentBx">
+              <h2><%=customer.name%></h2>
+              <div class="size">
+                <h3>Customer Projects :</h3>
+                <span><%= customer.softwares.count %></span>
+              </div>
+              <%= link_to "OPEN", customer_path(customer), class: "btn btn-flat" %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <% end %>
     </div>
-  <% end %>
+  </div>
 </div>
