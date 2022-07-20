@@ -35,6 +35,9 @@ class SoftwaresController < ApplicationController
   def new
     @software = Software.new
     authorize @software
+    @customers = Customer.all
+    @collection = @customers.map { |c| [c.name, c.id] }
+    @selected = 0
   end
 
   def destroy
@@ -46,6 +49,9 @@ class SoftwaresController < ApplicationController
 
   def edit
     authorize @software
+    @customers = Customer.all
+    @collection = @customers.map { |c| [c.name, c.id] }
+    @selected = @software.customer.id
   end
 
   def update
@@ -62,6 +68,6 @@ class SoftwaresController < ApplicationController
   end
 
   def software_params
-    params.require(:software).permit(:title, :image_url, :description, :price, :photo)
+    params.require(:software).permit(:title, :description, :price, :photo, :customer_id)
   end
 end
