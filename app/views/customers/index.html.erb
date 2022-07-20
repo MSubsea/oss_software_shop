@@ -12,8 +12,9 @@
         <div class="custcontainer">
           <div class="card">
             <div class="imgBx">
-              <% if customer.image_url %>
-              <%= image_tag customer.image_url, class: "w-4 mh-4" %>
+              <% if customer.photo.attached? %>
+              <%#= image_tag customer.image_url, class: "w-4 mh-4" %>
+              <%= cl_image_tag customer.photo.key %>
               <% end %>
             </div>
             <div class="contentBx">
