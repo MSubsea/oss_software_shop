@@ -23,7 +23,9 @@
   <hr>
 
   <%= link_to 'Softwares Overview', softwares_path() %>
-  <%= link_to 'Customer Overview', customer_path(@software.customer) %>
+  <% if @software.customer.present? %>
+    <%= link_to 'Customer Overview', customer_path(@software.customer) %>
+  <% end %>
   <% if policy(@software).edit? %>
     <%= link_to 'Edit', edit_software_path(@software)%>
   <% end %>

@@ -10,24 +10,32 @@
     %>
     <%= submit_tag "Search", class: "btn btn-primary" %>
   <% end %>
-  <% @softwares.each do |software| %>
-    <div class="card m-2">
-      <div class="d-flex">
-        <div class="px-2">
-          <% if software.photo.key.present? %>
-            <%= cl_image_tag software.photo.key, height: 200, width: 200, crop: :fill %>
-          <% end %>
+  <div class="container">
+    <div class="row">
+      <% @softwares.each do |software| %>
+        <div class="col">
+          <div class="custcontainer">
+            <div class="card">
+              <div class="imgBx">
+                <% if software.photo.key.present? %>
+                  <%= cl_image_tag software.photo.key, class: "w-4 mh-4" %>
+                <% end %>
+              </div>
+            </div>
+            <div class="contentBx">
+              <h2><%=software.title%></h2>
+              <div class="size">
+                <h3><%= software.description %></h3>
+                <span>7</span>
+              </div>
+              <%= link_to "OPEN", software_path(software), class: "btn btn-flat" %>
+              <% if policy(Release).new? %>
+                <%= link_to "Add new release", new_software_release_path(software), class: "p-2 btn btn-flat"%>
+              <% end %>
+            </div>
+          </div>
         </div>
-        <div class="px-2">
-          <h1 class="p-2"><%= link_to software.title, software_path(software) %></h1>
-          <p class="p-2"><%= software.description %></p>
-        </div>
-      </div>
-      <% if current_user %>
-        <% if policy(Release).new? %>
-          <%= link_to "Add new release", new_software_release_path(software), class: "p-2"%>
-        <% end %>
       <% end %>
     </div>
-  <% end %>
+  </div>
 </div>
