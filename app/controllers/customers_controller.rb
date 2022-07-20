@@ -43,6 +43,6 @@ class CustomersController < ApplicationController
   private
 
   def customer_params
-    params.require(:customer).permit(:name, :image_url)
+    params.require(:customer).permit(:name, :photo)
   end
 end
