@@ -69,6 +69,6 @@ class SoftwaresController < ApplicationController
   end
 
   def software_params
-    params.require(:software).permit(:title, :description, :price, :photo, :customer_id)
+    params.require(:software).permit(:title, :description, :price, :photo, :customer_id, :latitude, :longitude)
   end
 end
