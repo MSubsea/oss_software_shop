@@ -10,10 +10,13 @@
   <link rel="stylesheet" href="application.scss">
 </head>
   <body>
+    <%= javascript_pack_tag 'typewrite.js' %>
     <!-- Banner section -->
     <div class="banner">
       <h1>OneSubsea Controls Automation Software</h1>
-      <p>The new way to interact with your subsea infrastructure</p>
+      <p class="typewrite"data-period="2000" data-type='[ "The new way to interact with your subsea infrastructure.","Technology and Innovation.","I am exited.","I am OneSubsea." ]'>
+      <span class="wrap"></span>
+      </p>
       <a href="/customers" class="btn btn-primary mt-3">See more ...</a>
     </div>
     <!-- Footer section -->
