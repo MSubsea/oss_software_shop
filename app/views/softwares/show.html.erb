@@ -1,29 +1,29 @@
-<div class="container mt-5">
+<div class="container mt-5 bg-dark text-white">
   <div class="d-flex flex-row m-5">
-    <div style="width: 50%; height: 300px">
-      <h1 class="p-2">
+    <div style="width: 50%; height: 100%" class="card-info-show">
+      <h1 class="p-2 text-white">
       <% if @software.customer.present? %>
         <%= @software.customer.name %>
       <% end %>
       <%= @software.title %>
       </h1>
-      <h3 class="p-2"><%= @software.price %> €</h3>
       <% if @software.photo.key.present? %>
         <%= cl_image_tag @software.photo.key, height: 200, width: 200, crop: :fill %>
       <% end %>
       <p class="p-2"><%= @software.description %></p>
     </div>
-    <div style="width: 50%; height: 300px "
-      data-controller="mapbox"
-      data-mapbox-markers-value="<%= @geojson.to_json %>"
-      data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    <div style="width: 50%; height: 300 px "
+        class="card-info-map"
+        data-controller="mapbox"
+        data-mapbox-markers-value="<%= @geojson.to_json %>"
+        data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
   </div>
 
   <hr>
 
-  <%= link_to 'Softwares Overview', softwares_path() %>
-  <%= link_to 'Customer Overview', customer_path(@software.customer) %>
+  <%= link_to 'Softwares Overview', softwares_path(), class: "btn btn-primary" %>
+  <%= link_to 'Customer Overview', customer_path(@software.customer), class: "btn btn-secondary"%>
   <% if policy(@software).edit? %>
     <%= link_to 'Edit', edit_software_path(@software)%>
   <% end %>
@@ -37,7 +37,7 @@
     <%= link_to "Add new release", new_software_release_path(@software)%>
   <% end %>
   <hr>
-  <h2>Available Releases</h2>
+  <h4 class="p-2 text-white">Available Releases</h4>
   <% @software.releases.each do |release| %>
     <div class="card m-2 p-2">
       <h3><%= release.version_number %></h3>
