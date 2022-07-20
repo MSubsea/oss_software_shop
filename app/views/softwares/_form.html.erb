@@ -3,6 +3,8 @@
     <%= f.input :title %>
     <%= f.input :description %>
     <%= f.input :price %>
+    <%= f.input :latitude, input_html: { min: '-90', max: '90' } %>
+    <%= f.input :longitude, input_html: { min: '-180', max: '180' } %>
     <%= f.input :photo, as: :file %>
     <%= f.input :customer_id, collection: @collection, selected: @selected %>
     <%= f.submit %>
