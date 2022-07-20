@@ -16,7 +16,8 @@ class SoftwaresController < ApplicationController
     @geojson << {
       lat: @software.latitude,
       lng: @software.longitude,
-      image_url: helpers.asset_url("platform.png")
+      image_url: helpers.asset_url("platform.png"),
+      info_window: render_to_string(partial: "label")
     }
   end
 
