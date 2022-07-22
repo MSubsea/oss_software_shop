@@ -5,6 +5,11 @@ class ReleasesController < ApplicationController
     @software = Software.find(params[:software_id])
   end
 
+  def show
+    @release = Release.find(params[:id])
+    authorize @release
+  end
+
   def create
     @release = Release.new(release_params)
     authorize @release
