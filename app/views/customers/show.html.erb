@@ -1,12 +1,30 @@
 <div class="container mt-5">
-  <h1><%= @customer.name %></h1>
-  <%= link_to "Back to Customers index", customers_path, class: "btn btn-primary" %>
-  <% if policy(Software).create? %>
-    <%= link_to "Add new software", new_software_path, class: "btn btn-primary" %>
-  <% end %>
-  <%= render "foot", customer: @customer %>
+  <h1 style="text-align: center;"><%= @customer.name %></h1>
+  <div class="d-flex">
+    <% if policy(@customer).update? %>
+      <div class="p-2">
+        <%= link_to 'Edit', edit_customer_path(@customer), class: "btn btn-secondary"%>
+      </div>
+    <% end %>
+    <% if policy(@customer).destroy? %>
+      <div class="p-2">
+        <%= link_to "Delete",
+                customer_path(@customer),
+                method: :delete,
+                data: { confirm: "Are you sure?" },
+                class: "btn btn-danger text-white" %>
+        </div>
+    <% end %>
+    <div class="p-2">
+      <%= link_to "Back to Customers index", customers_path, class: "btn btn-secondary" %>
+    </div>
+    <% if policy(Software).create? %>
+      <div class="p-2">
+        <%= link_to "Add new software", new_software_path, class: "btn btn-secondary" %>
+      </div>
+    <% end %>
+  </div>
 </div>
-<hr>
 <div class="container">
   <div class="row">
     <% @customer.softwares.each do |software| %>
