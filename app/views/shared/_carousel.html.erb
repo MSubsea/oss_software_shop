@@ -1,0 +1,38 @@
+<!-- Carousel -->
+<div id="home_carousel" class="carousel slide" data-bs-ride="carousel">
+  <!-- Indicators/dots -->
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#home_carousel" data-bs-slide-to="0" class="active"></button>
+    <button type="button" data-bs-target="#home_carousel" data-bs-slide-to="1"></button>
+    <button type="button" data-bs-target="#home_carousel" data-bs-slide-to="2"></button>
+    <button type="button" data-bs-target="#home_carousel" data-bs-slide-to="3"></button>
+  </div>
+  <!-- The slideshow/carousel -->
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <%= image_tag "carousel/banner1.jpg", class: "d-block w-100" %>
+    </div>
+    <div class="carousel-item">
+      <%= image_tag "carousel/banner2.jpg", class: "d-block w-100" %>
+    </div>
+    <div class="carousel-item">
+      <%= image_tag "carousel/banner3.jpg", class: "d-block w-100" %>
+    </div>
+    <div class="carousel-item">
+      <%= image_tag "carousel/banner4.jpg", class: "d-block w-100" %>
+    </div>
+  </div>
+  <div class="carousel-caption">
+    <h1>OneSubsea Controls Automation Software</h1>
+    <p>The new way to interact with your subsea infrastructure</p>
+    <a href="/customers" class="btn btn-light mt-3">Customers</a>
+    <a href="/softwares" class="btn btn-light mt-3">Our Software</a>
+  </div>
+  <!-- Left and right controls/icons -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#home_carousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#home_carousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </button>
+</div>
