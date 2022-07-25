@@ -1,18 +1,23 @@
 <div class="container mt-5">
+  <div class="row">
   <% @users.each do |user| %>
-    <div class="card m-2">
+  <div class="col-sm-3">
+    <div class="card m-2 pb-2" style="width: 18rem;">
       <div class="d-flex">
         <div class="px-2">
           <h1 class="p-2"><%= user.first_name %> <%= user.last_name %></h1>
           <p class="p-2"><%= user.email %></p>
           <p class="p-2"><%= user.role %></p>
-          <%= link_to "Edit", edit_user_path(user) %>
+          <%= link_to "Edit", edit_user_path(user), class: "btn btn-secondary" %>
           <%= link_to "Delete",
             user_path(user),
             method: :delete,
+            class: "btn btn-danger",
             data: { confirm: "Are you sure?" } %>
         </div>
       </div>
     </div>
+    </div>
   <% end %>
+</div>
 </div>
