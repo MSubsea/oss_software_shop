@@ -6,21 +6,10 @@
   <link href="https://fonts.googleapis.com/css?family=Chivo:700|Overpass:400,700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
 
-
-  <link rel="stylesheet" href="application.scss">
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= javascript_pack_tag 'typewrite.js' %>
 </head>
-  <body>
-    <!-- Banner section -->
-    <div class="banner">
-      <h1>OneSubsea Controls Automation Software</h1>
-      <p>The new way to interact with your subsea infrastructure</p>
-      <a href="/customers" class="btn btn-primary mt-3">See more ...</a>
-    </div>
-    <!-- Footer section -->
-    <div class="footer">
-      <div class="container">
-        <p>Software made with ❤️ at OSS Celle</p>
-      </div>
-    </div>
-  </body>
+<body>
+  <%= render 'shared/carousel' %>
+</body>
 </html>

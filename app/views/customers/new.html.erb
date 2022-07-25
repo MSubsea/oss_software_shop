@@ -2,7 +2,7 @@
   <h1 class="pt-3">Create New Customer</h1>
   <%= simple_form_for @customer do |f|%>
   <%= f.input :name %>
-  <%= f.input :image_url %>
+  <%= f.input :photo, as: :file %>
   <%= f.submit %>
   <% end %>
 </div>

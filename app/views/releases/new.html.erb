@@ -1,8 +1,12 @@
+
+<%= javascript_include_tag 'https://upload-widget.cloudinary.com/global/all.js' %>
+<%= javascript_pack_tag 'cloudinary.js' %>
 <div class="container mt-5">
   <h1 class="pt-3">Create New Release</h1>
   <%= simple_form_for [@software, @release] do |f|%>
   <%= f.input :version_number %>
-  <%= f.input :software_url %>
-  <%= f.submit %>
+  <%= f.hidden_field :software_url %>
+  <button id="upload_widget" class="btn btn-primary me-3" type="button">Upload file</button>
+  <%= f.submit%>
   <% end %>
 </div>

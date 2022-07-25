@@ -6,6 +6,7 @@ require 'faker'
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Customer.destroy_all
 
 puts "Adding 4 customers..."
 file = URI.open('https://upload.wikimedia.org/wikipedia/commons/8/86/Chevron_Logo.svg')
