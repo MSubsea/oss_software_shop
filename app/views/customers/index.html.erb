@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <h1 class="h1 text-center">Customers</h1>
   <% if policy(Customer).new? %>
-    <%= link_to "Add new customer", new_customer_path %>
+    <%= link_to "Add new customer", new_customer_path, class: "btn btn-secondary" %>
   <% end %>
 
   <div class="container">
@@ -23,7 +23,7 @@
                 <h3>Customer Projects :</h3>
                 <span><%= customer.softwares.count %></span>
               </div>
-              <%= link_to "OPEN", customer_path(customer), class: "btn btn-flat" %>
+              <%= link_to "OPEN", customer_path(customer), class: "btn btn-secondary" %>
             </div>
           </div>
         </div>
