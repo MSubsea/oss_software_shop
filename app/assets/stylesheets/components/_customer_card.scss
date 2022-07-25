@@ -68,7 +68,10 @@
   left: 50%;
   // transform: translate(-50%, -50%) rotate(-25deg);
   transform: translate(-50%, -50%);
-  width: 200px;
+  max-width: 300px;
+  max-height: 230px;
+  width: auto;
+  height: auto;
 }
 
 .custcontainer .card .contentBx {
