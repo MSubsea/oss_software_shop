@@ -40,26 +40,40 @@
   <h1 class="h1 text-center">Available Releases</h1>
   <% @software.releases.each do |release| %>
     <div class="card m-2 p-2">
-      <h3><%= release.version_number %></h3>
-      <% release.reviews.each do |review| %>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center border-0"><%= review.comment %>
-          <span class="badge bg-dark rounded-pill"><%= review.rating %></span></li>
-        </ul>
-      <% end %>
-      <%= link_to "Download", release.software_url, class: "btn btn-secondary" %>
-      <% if policy(release).edit? %>
-        <%= link_to "Update release", edit_release_path(release), class: "btn btn-secondary" %>
-      <% end %>
-      <% if policy(Review).new? %>
-        <%= link_to "Create Review", new_release_review_path(release), class: "btn btn-secondary" %>
-      <% end %>
+      <div class="row">
+        <div class="col">
+          <h1 class="h1 text-white"><%= release.version_number %></h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <%= link_to "Download", release.software_url, class: "btn btn-secondary" %>
+
+          <% if policy(release).edit? %>
+            <%= link_to "Update release", edit_release_path(release), class: "btn btn-secondary" %>
+          <% end %>
+          <% if policy(Review).new? %>
+            <%= link_to "Create Review", new_release_review_path(release), class: "btn btn-secondary" %>
+          <% end %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col m-2">
+          <% release.reviews.each do |review| %>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center border-0"><%= review.comment %>
+              <span class="badge bg-dark rounded-pill"><%= review.rating %></span></li>
+            </ul>
+            <br>
+          <% end %>
+        </div>
+      </div>
     </div>
   <% end %>
 </div>
 
 <div class="container-info mt-5 text-white">
-      <%= link_to 'Softwares Overview', softwares_path(), class: "btn btn-primary" %>
+      <%= link_to 'Softwares Overview', softwares_path(), class: "btn btn-secondary" %>
       <%= link_to 'Customer Overview', customer_path(@software.customer), class: "btn btn-secondary"%>
       <% if policy(@software).edit? %>
         <%= link_to 'Edit', edit_software_path(@software), class: "btn btn-secondary"%>
@@ -69,9 +83,9 @@
                 software_path(@software),
                 method: :delete,
                 data: { confirm: "Are you sure?" },
-                class: "btn btn-secondary" %>
+                class: "btn btn-danger" %>
       <% end %>
       <% if policy(Release).new? %>
-        <%= link_to "Add new release", new_software_release_path(@software)%>
+        <%= link_to "Add new release", new_software_release_path(@software),class: "btn btn-secondary"%>
       <% end %>
 </div>
