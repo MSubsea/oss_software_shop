@@ -9,14 +9,14 @@
     <div class="col">
       <div class="card">
         <div class="header">
-          <h1 class="card-header text-white p-2 ">
+          <h1 class="card-header text-white p-2 border-0">
             <% if @software.customer.present? %>
             <%= @software.customer.name %>
             <% end %>
             <%= @software.title%>
           </h1>
         </div>
-        <div class="img">
+        <div class="img border-0">
           <% if @software.photo.key.present? %>
           <%= cl_image_tag @software.photo.key, height: 150, width: 150, crop: :fill %>
           <% end %>
