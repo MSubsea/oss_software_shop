@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <h1 class="h1 text-center">Available Software</h1>
   <% if policy(Software).new? %>
-    <%= link_to "Add new software", new_software_path, class: "p-2" %>
+    <%= link_to "Add new software", new_software_path, class: "btn btn-secondary" %>
   <% end %>
   <%= form_tag softwares_path, method: :get do %>
     <%= text_field_tag :query,
@@ -9,7 +9,7 @@
       class: "form-control",
       placeholder: "Search for software"
     %>
-    <%= submit_tag "Search", class: "btn btn-primary" %>
+    <%= submit_tag "Search", class: "btn btn-secondary" %>
   <% end %>
 
   <div class="container">
@@ -29,9 +29,9 @@
                   <h3><%= software.description %></h3>
                 </div>
                 <div class="size">
-                  <%= link_to "OPEN", software_path(software), class: "btn btn-flat mx-2 p-2" %>
+                  <%= link_to "OPEN", software_path(software), class: "btn btn-secondary mx-2 p-2" %>
                   <% if policy(Release).new? %>
-                    <%= link_to "ADD NEW RELEASE", new_software_release_path(software), class: "btn btn-flat mx-2 p-2" %>
+                    <%= link_to "ADD NEW RELEASE", new_software_release_path(software), class: "btn btn-secondary mx-2 p-2" %>
                   <% end %>
                 </div>
               </div>
