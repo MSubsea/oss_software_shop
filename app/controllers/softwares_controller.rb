@@ -19,6 +19,7 @@ class SoftwaresController < ApplicationController
       image_url: helpers.asset_url("platform.png"),
       info_window: render_to_string(partial: "label")
     }
+    @review = Review.new
   end
 
   def create
