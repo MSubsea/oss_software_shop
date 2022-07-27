@@ -1,8 +1,10 @@
-<div class="container mt-5">
-  <h1 class="pt-3">Update Customer</h1>
+<div class="row my-3"></div>
+<h1 class="pt-3 text-center">Update Customer</h1>
+<div class="container mt-5" style="width: 25rem">
   <%= simple_form_for @customer do |f|%>
   <%= f.input :name %>
   <%= f.input :image_url %>
-  <%= f.submit %>
+  <%= f.submit class: "btn btn-secondary" %>
   <% end %>
 </div>
+<div class="row mb-3"></div>
