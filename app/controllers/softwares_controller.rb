@@ -1,5 +1,4 @@
 class SoftwaresController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index]
   before_action :find_software, only: [:show, :edit, :update]
 
   def index
@@ -19,6 +18,7 @@ class SoftwaresController < ApplicationController
       image_url: helpers.asset_url("platform.png"),
       info_window: render_to_string(partial: "label")
     }
+    @review = Review.new
   end
 
   def create

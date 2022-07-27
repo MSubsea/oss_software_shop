@@ -51,20 +51,31 @@
           <% if policy(release).edit? %>
             <%= link_to "Update release", edit_release_path(release), class: "btn btn-secondary" %>
           <% end %>
-          <% if policy(Review).new? %>
-            <%= link_to "Create Review", new_release_review_path(release), class: "btn btn-secondary" %>
+
+          <%= simple_form_for([ release, @review ], remote: true) do |f|%>
+          <%= f.input :rating, as: :radio_buttons, collection: [['5 - excellent', 5],
+                                                                ['4 - very good', 4],
+                                                                ['3 - good', 3],
+                                                                ['2 - sufficient', 2],
+                                                                ['1 - weak', 1]] %>
+          <%= f.input :comment %>
+          <%= f.submit %>
           <% end %>
         </div>
       </div>
       <div class="row">
         <div class="col m-2">
-          <% release.reviews.each do |review| %>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center border-0"><%= review.comment %>
-              <div class="Stars" style="--rating: <%= review.rating %>;" aria-label="Rating of this product is <%= review.rating %> out of 5."></div>
-              </li>
-            </ul>
-            <br>
+          <% if release.reviews.blank? %>
+            Be the first to leave a review for <%= release.version_number %>
+          <% else %>
+            <% release.reviews.each do |review| %>
+                <ul class="list-group list-group-flush">
+                <li id="review-<%= review.id %>" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center border-0"><%= review.comment %>
+                <div class="Stars" style="--rating: <%= review.rating %>;" aria-label="Rating of this product is <%= review.rating %> out of 5."></div>
+                </li>
+                </ul>
+                <br>
+            <% end %>
           <% end %>
         </div>
       </div>
