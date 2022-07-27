@@ -1,5 +1,4 @@
 class SoftwaresController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index]
   before_action :find_software, only: [:show, :edit, :update]
 
   def index
